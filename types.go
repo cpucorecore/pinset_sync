@@ -5,6 +5,6 @@ type ClusterPin struct {
 	Allocations []string
 }
 
-type ClusterPins []ClusterPin
+type ClusterState []ClusterPin
 
 type PinSet []string
