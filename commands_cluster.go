@@ -2,7 +2,36 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 )
+
+func StopCluster() error {
+	cmd := "bash"
+	args := []string{"./scripts/stop_cluster.sh"}
+
+	d, e := DoCmd(cmd, args)
+	if e != nil {
+		return e
+	}
+
+	fmt.Printf("stop cluster return msg: %s\n", string(d))
+
+	return nil
+}
+
+func StartCluster() error {
+	cmd := "bash"
+	args := []string{"./scripts/daemon_cluster.sh"}
+
+	d, e := DoCmd(cmd, args)
+	if e != nil {
+		return e
+	}
+
+	fmt.Printf("start cluster return msg: %s\n", string(d))
+
+	return nil
+}
 
 func ClusterStateExport() (ClusterState, error) {
 	cmd := "ipfs-cluster-service"
